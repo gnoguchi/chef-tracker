@@ -6,7 +6,7 @@
 
 {{input value = name}}
 
-<h4>Chef's available today:</h4>
+<h4>{{availableChefs.length}} of our {{chefLength}} chefs are available today, they are:</h4>
 {{#each model as |cook|}}
 {{#if cook.isCookingToday}}
 <li class="available">
@@ -17,7 +17,10 @@
 <li class="not-available">
   {{cook.name}}
   <button {{action 'enter' cook}}>Enter</button>
+  <button {{action 'fireCook' cook}}>Fire!</button>
 </li>
 {{/if}}
 {{/each}}
-{{outlet}}
+
+{{input value=newItem}}
+<button {{action 'saveChefItem'}}>Save</button>
