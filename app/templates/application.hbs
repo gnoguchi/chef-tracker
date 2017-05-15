@@ -5,8 +5,7 @@
 <p id="explanation">Find out with <b>Chef Tracker</b>, the hottest new chef-tracking app on the market</p>
 
 {{input value = name}}
-
-<h4>{{availableChefs.length}} of our {{chefLength}} chefs are available today, they are:</h4>
+<h4>Our {{chefLength}} chefs teach {{totalStudents}} students.</h4>
 {{#each model as |cook|}}
 {{#if cook.isCookingToday}}
 <li class="available">
@@ -20,6 +19,13 @@
   <button {{action 'fireCook' cook}}>Fire!</button>
 </li>
 {{/if}}
+<li>
+  Number of students:
+  <button {{action 'removeStudent' cook}}>-</button>
+  {{cook.students}}
+  <button {{action 'addStudent' cook}}>+</button>
+</li>
+
 {{/each}}
 
 {{input value=newItem}}
