@@ -1,0 +1,32 @@
+<h1>Chef Tracker</h1>
+
+<p>Is your favorite {{name}} cooking right now?</p>
+
+<p id="explanation">Find out with <b>Chef Tracker</b>, the hottest new chef-tracking app on the market</p>
+
+{{input value = name}}
+<h4>Our {{chefLength}} chefs teach {{totalStudents}} students.</h4>
+{{#each model as |cook|}}
+{{#if cook.isCookingToday}}
+<li class="available">
+  {{cook.name}}
+  <button {{action 'exit' cook}}>Exit</button>
+</li>
+{{else}}
+<li class="not-available">
+  {{cook.name}}
+  <button {{action 'enter' cook}}>Enter</button>
+  <button {{action 'fireCook' cook}}>Fire!</button>
+</li>
+{{/if}}
+<li>
+  Number of students:
+  <button {{action 'removeStudent' cook}}>-</button>
+  {{cook.students}}
+  <button {{action 'addStudent' cook}}>+</button>
+</li>
+
+{{/each}}
+
+{{input value=newItem}}
+<button {{action 'saveChefItem'}}>Save</button>
