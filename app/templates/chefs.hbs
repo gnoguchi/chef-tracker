@@ -1,3 +1,5 @@
+<div class="flex-container">
+  <div class="flex-item">
 <h1>Chef Tracker</h1>
 
 <p>Is your favorite {{name}} cooking right now?</p>
@@ -9,7 +11,7 @@
 {{#each model as |cook|}}
 {{#if cook.isCookingToday}}
 <li class="available">
-  {{cook.name}}
+  {{#link-to 'chefs.chef' cook.id}}{{cook.name}}{{/link-to}}
   <button {{action 'exit' cook}}>Exit</button>
 </li>
 {{else}}
@@ -30,3 +32,8 @@
 
 {{input value=newItem}}
 <button {{action 'saveChefItem'}}>Save</button>
+</div>
+  <div class="flex-item">
+    {{outlet}}
+  </div>
+</div>
